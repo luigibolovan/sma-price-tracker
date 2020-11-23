@@ -1,8 +1,8 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/pycharm+iml,androidstudio
-# Edit at https://www.toptal.com/developers/gitignore?templates=pycharm+iml,androidstudio
+# Created by https://www.toptal.com/developers/gitignore/api/pycharm+all,androidstudio
+# Edit at https://www.toptal.com/developers/gitignore?templates=pycharm+all,androidstudio
 
-### PyCharm+iml ###
+### PyCharm+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
@@ -75,13 +75,21 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-### PyCharm+iml Patch ###
+### PyCharm+all Patch ###
+# Ignores the whole .idea folder and all .iml files
+# See https://github.com/joeblau/gitignore.io/issues/186 and https://github.com/joeblau/gitignore.io/issues/360
+
+.idea/
+
 # Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
 
 *.iml
 modules.xml
 .idea/misc.xml
 *.ipr
+
+# Sonarlint plugin
+.idea/sonarlint
 
 ### AndroidStudio ###
 # Covers files to be ignored for android development using Android Studio.
@@ -213,4 +221,4 @@ hs_err_pid*
 
 !/gradle/wrapper/gradle-wrapper.jar
 
-# End of https://www.toptal.com/developers/gitignore/api/pycharm+iml,androidstudio
+# End of https://www.toptal.com/developers/gitignore/api/pycharm+all,androidstudio
