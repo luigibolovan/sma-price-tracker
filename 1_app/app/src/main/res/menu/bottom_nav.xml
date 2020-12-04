@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_profile_btn"
+        android:icon="@drawable/ic_account_box_24"
+        android:title="@string/account"/>
+
+    <item
+        android:id="@+id/item_search_btn"
+        android:icon="@drawable/ic_search_24"
+        android:title="@string/search"/>
+
+    <item
+        android:id="@+id/item_favorites_btn"
+        android:icon="@drawable/ic_favorites_24"
+        android:title="@string/favorites"/>
+</menu>

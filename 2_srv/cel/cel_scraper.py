@@ -19,7 +19,7 @@ productListing = soup.find("div", {"class": "productlisting"}, recursive=True)
 ### thumbnail
 thumbnails = []
 
-imgTags = productListing.find_all("img", {'itemprop' : 'image'}, recursive=True)
+imgTags = productListing.find_all("img", {'itemprop': 'image'}, recursive=True)
 for img in imgTags:
     thumbnails.append(img['content'])
 print(thumbnails)

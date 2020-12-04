@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_search_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_search_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_search_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_search_edit_text_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_search_edit_text_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_search_edit_text"
+        app:layout_constraintLeft_toRightOf="@id/guideline_search_edit_text_start"
+        app:layout_constraintRight_toLeftOf="@id/guideline_search_edit_text_end"
+        app:layout_constraintTop_toBottomOf="@id/guideline_search_start">
+
+        <ImageView
+            android:id="@+id/iv_search_logo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:hint="@string/search"
+            android:shadowColor="@color/iguana_green"
+            android:textColorHint="@color/iguana_green" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_search_end"
+        app:layout_constraintLeft_toRightOf="@id/guideline_search_edit_text_start"
+        app:layout_constraintRight_toLeftOf="@id/guideline_search_edit_text_end"
+        app:layout_constraintTop_toBottomOf="@id/guideline_search_edit_text">
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_emag_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <CheckBox
+                android:id="@+id/checkbox_search_emag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true" />
+
+            <TextView
+                android:id="@+id/tv_search_emag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/checkbox_search_emag"
+                android:text="emag.ro"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relative_layout_cel_box"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/relative_layout_emag_box">
+
+            <CheckBox
+                android:id="@+id/checkbox_search_cel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_search_cel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/checkbox_search_cel"
+                android:text="CEL.ro"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/relative_layout_cel_box">
+
+            <CheckBox
+                android:id="@+id/checkbox_search_another_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_search_another_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/checkbox_search_another_one"
+                android:text="Another one"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative_layout_emag_box"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="48dp"
+            android:background="@color/iguana_green"
+            android:text="@string/search"
+            android:textColor="@color/white"
+            android:textStyle="italic"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
