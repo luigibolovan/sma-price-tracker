@@ -13,12 +13,12 @@ def hello_world():
 
 @app.route('/emag/<product>')
 def get_emag_data_for(product):
-    return json.dumps(get_emag_data(product))
+    return json.dumps(get_emag_data(product), indent=4)
 
 
 @app.route('/cel/<product>')
 def get_cel_data_for(product):
-    return json.dumps(get_cel_data(product))
+    return json.dumps(get_cel_data(product), indent=4)
 
 
 if __name__ == '__main__':

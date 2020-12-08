@@ -95,9 +95,9 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relative_layout_cel_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/relative_layout_cel_box"
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:layout_toEndOf="@id/relative_layout_emag_box">
@@ -142,6 +142,7 @@
         </RelativeLayout>
 
         <Button
+            android:id="@+id/btn_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/relative_layout_emag_box"
@@ -150,7 +151,7 @@
             android:background="@color/iguana_green"
             android:text="@string/search"
             android:textColor="@color/white"
-            android:textStyle="italic"/>
+            android:textStyle="italic" />
 
     </RelativeLayout>
 

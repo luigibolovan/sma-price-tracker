@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as beautifulsoup
 import nltk
+import re
 
 URL = 'https://www.emag.ro/search/'
 
@@ -47,7 +48,14 @@ def get_prices(container):
 
     priceTags = container.find_all("p", {"class": "product-new-price"}, recursive=True)
     for price in priceTags:
-        prices.append(price.get_text())
+        text = price.get_text()
+        pret = text[:len(text) - 4] # " Lei"
+        pret_wout_bani = pret[:len(pret) - 2]
+
+        pret_wout_dots = list(filter('.'.__ne__, pret_wout_bani))
+        final_prices = int("".join(pret_wout_dots))
+        print(final_prices)
+        prices.append(final_prices)
 
     return prices
 

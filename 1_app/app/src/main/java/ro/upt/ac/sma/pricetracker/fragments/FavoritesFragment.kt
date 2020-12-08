@@ -1,10 +1,11 @@
-package ro.upt.ac.sma.pricetracker
+package ro.upt.ac.sma.pricetracker.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import ro.upt.ac.sma.pricetracker.R
 
 class FavoritesFragment : Fragment() {
     override fun onCreateView(

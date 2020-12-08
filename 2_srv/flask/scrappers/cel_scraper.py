@@ -45,6 +45,7 @@ def get_prices(container):
 
     priceTags = container.find_all("b", {'productprice': '1'}, recursive=True)
     for price in priceTags:
+        print(price.get_text())
         prices.append(price.get_text())
 
     return prices

@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBar.DISPLAY_SHOW_CUSTOM
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ro.upt.ac.sma.pricetracker.fragments.AccountFragment
+import ro.upt.ac.sma.pricetracker.fragments.FavoritesFragment
+import ro.upt.ac.sma.pricetracker.fragments.SearchFragment
 
 class SearchActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
