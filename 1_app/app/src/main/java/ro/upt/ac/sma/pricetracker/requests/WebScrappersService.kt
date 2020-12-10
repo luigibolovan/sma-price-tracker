@@ -7,7 +7,7 @@ import ro.upt.ac.sma.pricetracker.requests.model.ProductResults
 
 interface WebScrappersService {
 
-    @GET("{product}")
-    fun getProduct(@Path("product") product : String) : Call<ProductResults>
+    @GET("/{product}")
+    fun getProducts(@Path("product") product : String) : Call<ProductResults>
 
 }

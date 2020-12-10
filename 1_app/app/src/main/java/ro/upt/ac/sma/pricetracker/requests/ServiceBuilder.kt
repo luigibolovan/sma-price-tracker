@@ -4,9 +4,10 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ServiceBuilder {
+object ServiceBuilder {
+    private var store : String = ""
 
-    private val URL = ""
+    private val URL = "192.168.100.29/$store"
 
     private val client = OkHttpClient.Builder().build()
 
@@ -16,7 +17,11 @@ class ServiceBuilder {
         .client(client)
         .build()
 
-    fun<T> buildService(service: Class<T>): T {
+    fun setStoreName(storeName: String) {
+        store = storeName
+    }
+
+    fun <T> buildService(service: Class<T>): T {
         return retrofit.create(service)
     }
 }
