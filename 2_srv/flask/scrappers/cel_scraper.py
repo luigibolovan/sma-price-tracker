@@ -64,4 +64,5 @@ def get_cel_data(product):
         list_of_dicts.append(dict(zip(key_lists, element)))
 
     print(list_of_dicts)
+    URL = 'https://www.cel.ro/cauta/'
     return list_of_dicts

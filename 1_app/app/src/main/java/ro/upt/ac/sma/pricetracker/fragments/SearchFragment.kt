@@ -1,14 +1,13 @@
 package ro.upt.ac.sma.pricetracker.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import retrofit2.Call
 import ro.upt.ac.sma.pricetracker.R
@@ -17,20 +16,22 @@ import ro.upt.ac.sma.pricetracker.requests.WebScrappersService
 import java.util.*
 import retrofit2.Callback
 import retrofit2.Response
-import ro.upt.ac.sma.pricetracker.requests.model.ProductResults
+import ro.upt.ac.sma.pricetracker.requests.model.Product
+import kotlin.collections.ArrayList
 
 class SearchFragment : Fragment() {
-
-    private var searchBtn: Button?          = null
-    private var checkBoxEmag: CheckBox?     = null
-    private var checkBoxCel: CheckBox?      = null
-    private var searchEditText : EditText?  = null
-
+    private lateinit var searchBtn: Button
+    private lateinit var checkBoxEmag: CheckBox
+    private lateinit var checkBoxCel: CheckBox
+    private lateinit var searchEditText : EditText
+    private val products: ArrayList<Product> = ArrayList()
+    private var storesRequested = 0
+    private var responsesReceived = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val myView : View = inflater.inflate(R.layout.fragment_search, container, false)
 
         searchBtn       = myView.findViewById(R.id.btn_search)
@@ -44,54 +45,67 @@ class SearchFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        searchBtn?.setOnClickListener {
+        searchBtn.setOnClickListener {
 
-            if (checkBoxEmag?.isChecked == true) {
-
-                ServiceBuilder.setStoreName("emag")
+            if (checkBoxEmag.isChecked) {
+                storesRequested++;
                 val request = ServiceBuilder.buildService(WebScrappersService::class.java)
-                val call = request.getProducts(getFormattedProductName())
+                val call = request.getProducts("emag",getFormattedProductName())
 
-                call.enqueue(object : Callback<ProductResults>{
-                    @SuppressLint("ShowToast")
+                call.enqueue(object : Callback<ArrayList<Product>>{
                     override fun onResponse(
-                        call: Call<ProductResults>,
-                        response: Response<ProductResults>
+                        call: Call<ArrayList<Product>>,
+                        response: Response<ArrayList<Product>>
                     ) {
-                        if (response.isSuccessful) {
-                            Toast.makeText(activity, response.body()!!.products.toString(), Toast.LENGTH_LONG)
+                        if (response.isSuccessful) run {
+                            addProducts(response.body()!!)
+                            responsesReceived++
+                            checkTransition()
                         }
                     }
 
-                    @SuppressLint("ShowToast")
-                    override fun onFailure(call: Call<ProductResults>, t: Throwable) {
-                        Toast.makeText(activity, "${t.message}", Toast.LENGTH_SHORT)
+                    override fun onFailure(call: Call<ArrayList<Product>>, t: Throwable) {
+                        Log.d("CEL-RESPONSE", "Failure: ${t.message}")
                     }
                 })
             }
 
-            if (checkBoxCel?.isChecked == true) {
-                ServiceBuilder.setStoreName("cel")
+            if (checkBoxCel.isChecked) {
+                storesRequested++;
                 val request = ServiceBuilder.buildService(WebScrappersService::class.java)
-                val call = request.getProducts(getFormattedProductName())
+                val call = request.getProducts("cel", getFormattedProductName())
 
-                call.enqueue(object : Callback<ProductResults>{
-                    @SuppressLint("ShowToast")
+                call.enqueue(object : Callback<ArrayList<Product>>{
                     override fun onResponse(
-                        call: Call<ProductResults>,
-                        response: Response<ProductResults>
+                        call: Call<ArrayList<Product>>,
+                        response: Response<ArrayList<Product>>
                     ) {
-                        if (response.isSuccessful) {
-                            Toast.makeText(activity, response.body()!!.products.toString(), Toast.LENGTH_LONG)
+                        if (response.isSuccessful) run {
+                            addProducts(response.body()!!)
+                            responsesReceived++
+                            checkTransition()
                         }
                     }
 
-                    @SuppressLint("ShowToast")
-                    override fun onFailure(call: Call<ProductResults>, t: Throwable) {
-                        Toast.makeText(activity, "${t.message}", Toast.LENGTH_SHORT)
+                    override fun onFailure(call: Call<ArrayList<Product>>, t: Throwable) {
+                        Log.d("CEL-RESPONSE", "Failure: ${t.message}")
                     }
                 })
             }
+        }
+    }
+
+    private fun addProducts(products: ArrayList<Product>) {
+        this.products.addAll(products)
+    }
+
+    private fun checkTransition() {
+        if (storesRequested == responsesReceived) {
+            Log.d("First product", products[0].title!!)
+            val searchListFragment = SearchListFragment.newInstance(products)
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_container, searchListFragment)
+            transaction?.commit()
         }
     }
 

@@ -9,6 +9,7 @@
         android:icon="@drawable/cart"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true">
         <activity android:name=".ProductAnalysisActivity"/>
         <activity android:name=".ProductActivity"

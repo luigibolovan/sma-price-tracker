@@ -12,6 +12,7 @@ def get_container(product):
         URL += token + '%20'
     page = requests.get(URL)
     soup = beautifulsoup(page.content, features="html.parser")
+    print(soup.prettify())
     card_grid = soup.find("div", id="card_grid", recursive=True)
 
     return card_grid
@@ -72,4 +73,5 @@ def get_emag_data(product):
         list_of_dicts.append(dict(zip(key_lists, element)))
 
     print(list_of_dicts)
+    URL = 'https://www.emag.ro/search/'
     return list_of_dicts
