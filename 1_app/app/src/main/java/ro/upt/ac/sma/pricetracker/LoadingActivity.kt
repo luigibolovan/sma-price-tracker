@@ -20,6 +20,7 @@ class LoadingActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 startActivity(searchActivityIntent)
+                finish()
             }
         }
 

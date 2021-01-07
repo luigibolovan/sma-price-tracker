@@ -7,9 +7,11 @@ data class Product(
     val title: String?,
     val product_url: String?,
     val product_thumbnail: String?,
-    val product_price: String?
+    val product_price: String?,
+    val vendor: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -22,6 +24,7 @@ data class Product(
         parcel.writeString(product_url)
         parcel.writeString(product_thumbnail)
         parcel.writeString(product_price)
+        parcel.writeString(vendor)
     }
 
     override fun describeContents(): Int {

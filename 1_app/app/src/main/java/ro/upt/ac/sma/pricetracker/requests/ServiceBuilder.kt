@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ServiceBuilder {
     private var URL = "http://3.124.8.58:5000/"
 
-    private val client = OkHttpClient.Builder().build()
+    private val client = OkHttpClient.Builder().cache(null).build()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(URL)

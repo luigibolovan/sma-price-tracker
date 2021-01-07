@@ -36,10 +36,11 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_product_activity_start">
 
         <ImageView
+            android:id="@+id/iv_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/ic_baseline_arrow_back_32" />
 
         <ImageView
@@ -53,20 +54,21 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:elevation="24dp"
         app:layout_constraintBottom_toTopOf="@id/guideline_product_activity_end"
         app:layout_constraintTop_toBottomOf="@id/guideline_product_photo">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp">
 
             <TextView
                 android:id="@+id/tv_product_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:text="Titlu"
                 android:textColor="@color/black"
                 android:textSize="24sp"
@@ -78,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_product_title"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:text="Pret:"
                 android:textColor="@color/orangey_red"
                 android:textSize="16sp"
@@ -90,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_product_price"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:text="Vandut de:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -102,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_product_seller"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:autoLink="web"
                 android:text="www.google.ro"
                 android:textColor="@color/black"

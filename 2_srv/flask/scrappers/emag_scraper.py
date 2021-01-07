@@ -70,8 +70,8 @@ def get_emag_data(product):
 
     list_of_dicts = []  # a.k.a json array :)
     for element in list(zip(product_titles, product_links, product_thumbnails, product_prices)):
-        list_of_dicts.append(dict(zip(key_lists, element)))
-
+        product = dict(zip(key_lists, element))
+        product['vendor'] = 'emag'
+        list_of_dicts.append(product)
     print(list_of_dicts)
-    URL = 'https://www.emag.ro/search/'
     return list_of_dicts
